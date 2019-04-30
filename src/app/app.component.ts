@@ -7,6 +7,9 @@ import { Data } from './data';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+
+
   
 })
 export class AppComponent implements OnInit {
@@ -24,18 +27,21 @@ export class AppComponent implements OnInit {
         this.id.push(y.id);
         this.downloadCount.push(y.downloadCount);
       });
+
+
       this.chart = new Chart('canvas', {
         type: 'line',
         data: {
           labels: this.id,
           datasets: [
             {
+              label: "Downloads",
               data: this.downloadCount,
               backgroundColor: [
                 'rgba(105, 0, 132, .2)',
               ],
               borderColor: [
-                'rgba(200, 99, 132, .7)',
+                'rgba(62, 149, 205, 0.7)',
               ],
               borderWidth: 2,
               fill: true
@@ -43,7 +49,7 @@ export class AppComponent implements OnInit {
           ]
         },
         options: {
-       
+          
           legend: {
             display: true,
                  
@@ -58,6 +64,10 @@ export class AppComponent implements OnInit {
             }],
             yAxes: [{
               display: true,
+              ticks: {
+                beginAtZero: true,
+              
+            }
             }],
           }
         }
